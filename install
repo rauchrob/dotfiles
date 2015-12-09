@@ -23,7 +23,7 @@ main() {
 }
 
 parse_options() {
-  while getopts "nfqdi:" opt; do
+  while getopts "nfqdi:h" opt; do
     case $opt in
       n)
         debug "dry run mode enabled"
@@ -44,8 +44,29 @@ parse_options() {
       i)
         TARGET_DIR="$OPTARG"
         ;;
+      h)
+        print_help
+        exit 0
+        ;;
+      *)
+        print_help
+        exit 2
+        ;;
     esac
   done
+}
+
+print_help () {
+  cat << HELP
+Usage: ${0} [-nfqd] [-i TARGET_DIR]
+Options:
+  -d    debug mode
+  -f    force mode
+  -h    print this help
+  -i    install to TARGET_DIR (defaults to $HOME)
+  -n    dry run
+  -q    quiet mode
+HELP
 }
 
 create_dotfiles_link() {
