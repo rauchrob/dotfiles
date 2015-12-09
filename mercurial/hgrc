@@ -1,0 +1,22 @@
+[ui]
+merge = vimdiff
+
+[merge-tools]
+vimdiff.executable = vim
+vimdiff.args = -d $base $local $output $other +close +close
+
+[extensions]
+record=
+graphlog=
+fetch=
+rebase=
+strip=
+color=
+transplant=
+gpg=
+hgext.extdiff=
+
+[extdiff]
+cmd.vimdiff =
+
+%include .hgrc.local

@@ -1,0 +1,1 @@
+../available/packer.completion.bash

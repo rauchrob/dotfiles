@@ -1,0 +1,14 @@
+# ignore vim's temporary files
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# ignore vagrant's temporary files
+.vagrant/
+
+# ignore RVM info files
+.ruby-version
+.ruby-gemset

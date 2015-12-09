@@ -1,0 +1,1 @@
+../available/hg.plugin.bash

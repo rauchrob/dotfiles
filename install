@@ -1,0 +1,143 @@
+#!/usr/bin/env bash
+
+set -eu
+
+trap 'unexpected non-zero exit code in line $LINENO' ERR
+
+DRY_RUN=false
+FORCE=false
+QUIET=false
+DEBUG=false
+TARGET_DIR=${HOME}
+
+DOTFILE_DIR=$(cd $(dirname $0); pwd)
+
+MKDIR=$(which mkdir)
+LN=$(which ln)
+RM=$(which rm)
+
+main() {
+  parse_options "$@"
+  create_dotfiles_link
+  install_dotfiles
+}
+
+parse_options() {
+  while getopts "nfqdi:" opt; do
+    case $opt in
+      n)
+        debug "dry run mode enabled"
+        DRY_RUN=true
+        ;;
+      f)
+        debug "force mode enabled"
+        FORCE=true
+        ;;
+      q)
+        debug "quiet mode enabled"
+        QUIET=true
+        ;;
+      d)
+        debug "debug mode enabled"
+        DEBUG=true
+        ;;
+      i)
+        TARGET_DIR="$OPTARG"
+        ;;
+    esac
+  done
+}
+
+create_dotfiles_link() {
+  link "" .dotfiles
+}
+
+install_dotfiles() {
+  source ${DOTFILE_DIR}/dotfiles.sh
+}
+
+# create symbolic links in $TARGET_DIR with targets relative to $DOTFILE_DIR.
+link() {
+  local target="${DOTFILE_DIR}/${1}"
+
+  case $# in
+    1)
+      local path="${TARGET_DIR}/.${1}"
+      ;;
+    2)
+      local path="${TARGET_DIR}/${2}"
+      ;;
+  esac
+
+  path_dir=$(dirname "$path")
+
+  if [ -e "$path_dir" ]; then
+    if ! [ -d "$path_dir" ]; then
+      if $FORCE; then
+        warning "$path_dir is no directory, forcing removal."
+        rm -rf "$path_dir"
+        mkdir -p "$path_dir"
+      else
+        warning "directory $path_dir exists, skipping."
+        return
+      fi
+    fi
+  else
+    mkdir -p "$path_dir"
+  fi
+
+  if [ -e "$path" ]; then
+    if [ -L "$path" ] && [ "$(readlink "$path")" == "$target" ]; then
+      return
+    fi
+    
+    if $FORCE; then
+      rm -rf "$path"
+    else
+      warning "$path exists, skipping"
+      return
+    fi
+  fi
+
+  debug "creating symbolic link ${path} -> ${target}"
+  ln -s $target $path
+}
+
+warning() { 
+  if ! $QUIET; then 
+    echo "Warning: $*" >&2
+  fi
+}
+
+info() { 
+  if ! $QUIET; then
+    echo "Info: $*"
+  fi
+}
+
+debug() { 
+  if $DEBUG; then
+    echo "Debug: $*" >&2
+  fi
+}
+
+mkdir() { run $MKDIR "$@"; }
+ln() { run $LN "$@"; }
+rm() { run $RM "$@"; }
+
+run() {
+  if $DRY_RUN; then
+    if ! $QUIET; then
+      echo "$* (noop)"
+    fi
+  else
+    if ! $QUIET; then
+      echo $*
+      "$@"
+    fi
+  fi
+}
+
+main "$@"
+
+exit 0

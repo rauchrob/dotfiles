@@ -1,0 +1,10 @@
+# .bash_profile for login shells (see .bashrc for interactive shells)
+
+# Source global defintions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi

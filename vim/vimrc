@@ -1,0 +1,153 @@
+"======================================================================
+" VUNDLE CONFIGURATION - see https://github.com/gmarik/Vundle.vim
+"======================================================================
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'tpope/vim-surround'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
+Plugin 'godlygeek/tabular'
+Plugin 'rodjek/vim-puppet'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'tomasr/molokai'
+Plugin 'chikamichi/mediawiki.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tmux-plugins/vim-tmux'
+Plugin 'sitaramc/gitolite'
+Plugin 'jcf/vim-latex'
+Plugin 'reedes/vim-lexical'
+Plugin 'rsmenon/vim-mathematica'
+Plugin 'mattn/emmet-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+"======================================================================
+" STANDARD CONFIGURATION
+"======================================================================
+filetype plugin indent on
+
+" hide tool- and scrollbars in gvim
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
+" set some coloring
+set t_Co=256
+silent! colorscheme desert
+syntax on
+set number
+
+" searching
+set incsearch
+set hlsearch
+
+" automatic indentation
+set autoindent
+set smartindent
+
+" tabulator behavious
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+"set tabstop=2
+
+" show tab characters
+:set list
+:set listchars=tab:▸\ 
+
+" allow modified hidden buffers
+set hidden
+
+" pressing F2 will toggle autoindentation, useful for pasting:
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+" enable modeline comments
+set modeline
+
+"======================================================================
+" Airline
+"======================================================================
+" always show status line
+set laststatus=2
+
+"======================================================================
+" EasyMotion (minimal configuration as documented)
+"======================================================================
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+"======================================================================
+" Markdown
+"======================================================================
+" Disable default folding in vim-markdown
+let g:vim_markdown_folding_disabled=1
+
+"======================================================================
+" NERDTree
+"======================================================================
+map <C-n> :NERDTreeToggle<CR>
+
+"======================================================================
+" Syntastic
+"======================================================================
+" Syntastic: always pop up error window after syntax checks
+" (this may introduce problems with other plugins, be careful!)
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_puppet_puppetlint_args = "--no-80chars-check"
+
+"======================================================================
+" Fugitive
+"======================================================================
+" same bindings for merging diffs as in normal mode
+xnoremap dp :diffput<cr>
+xnoremap do :diffget<cr>
+
+"======================================================================
+" LaTeX-Plugin
+"======================================================================
+let g:Tex_DefaultTargetFormat = "pdf"
+
+"======================================================================
+" ViM-Lexical
+"======================================================================
+augroup lexical
+  autocmd!
+  autocmd FileType tex call lexical#init()
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup END
+
+let g:lexical#spelllang = ['en_us']

@@ -1,0 +1,24 @@
+Host hu-berlin
+  Hostname ssh.math.hu-berlin.de
+  User rauch
+
+Host schunter
+  Hostname schunter.math.nat.tu-bs.de
+  User robrauch
+
+Host puppet.robertrauch.de
+  Hostname puppet.robertrauch.de
+
+Host do512-1
+  Hostname do512-1.robertrauch.de
+
+Host scm.gns-systems.de
+  User adml_rauch
+
+Host foreman.gns-systems.corp
+  User adml_rauch
+  Hostname sfserv12.gns-systems.corp
+
+Host puppet.gns-systems.corp
+  User root
+
