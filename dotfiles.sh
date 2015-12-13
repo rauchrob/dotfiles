@@ -20,6 +20,7 @@ link mercurial/hgrc.local .hgrc.local
 
 link inputrc
 link rvmrc
+link gemrc
 link tmux/tmux.conf .tmux.conf
 link tmux/plugins
 run tmux start-server
