@@ -18,3 +18,27 @@ _project_helper() {
 
   cd $PROJECT_DIR
 }
+
+############################################################
+# Bash completion
+
+_project_completion_helper() {
+  # Pointer to current completion word.
+  local cur
+  cur=${COMP_WORDS[COMP_CWORD]}
+
+  COMPREPLY=($(find ${1} -maxdepth 1 -type d -name "${cur}*" -printf "%f\n"))
+
+  return 0
+}
+
+_scratch() {
+  _project_completion_helper $SCRATH_PATH
+}
+
+_project() {
+  _project_completion_helper $PROJECT_PATH
+}
+
+complete -F _scratch scratch
+complete -F _project project
