@@ -17,3 +17,10 @@ diff = meld
 
 [credential]
 helper = gnomekeyring
+
+[identity "gns-systems"]
+	name = Robert Rauch (GNS Systems GmbH)
+	email = robert.rauch@gns-systems.de
+[identity "private"]
+	name = Robert Rauch
+	email = mail@robertrauch.de
