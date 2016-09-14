@@ -1,6 +1,6 @@
 link git/gitconfig .gitconfig
 link git/gitignore_global .gitignore_global
-link git/gitconfig.local .gitconfig_local
+link git/gitconfig.local .gitconfig.local
 
 link gnupg/gpg-agent.conf
 link gnupg/gpg.conf
