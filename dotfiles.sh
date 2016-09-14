@@ -1,9 +1,3 @@
-link bash/bashrc .bashrc
-link bash/bash_profile .bash_profile
-
-link eyaml/config.yaml
-link eyaml/public_key.pkcs7.pem
-
 link git/gitconfig .gitconfig
 link git/gitignore_global .gitignore_global
 link git/gitconfig.local .gitconfig_local
@@ -14,9 +8,6 @@ link gnupg/pubring.gpg
 link gnupg/secring.gpg
 link gnupg/trustdb.gpg
 run chmod -R go-rwx ~/.gnupg
-
-link mercurial/hgrc .hgrc
-link mercurial/hgrc.local .hgrc.local
 
 link inputrc
 link rvmrc

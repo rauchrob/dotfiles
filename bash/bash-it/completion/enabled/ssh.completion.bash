@@ -1,1 +1,0 @@
-../available/ssh.completion.bash

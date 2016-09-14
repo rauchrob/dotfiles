@@ -1,1 +1,0 @@
-../available/capistrano.completion.bash
