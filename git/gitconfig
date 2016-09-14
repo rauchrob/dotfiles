@@ -16,7 +16,7 @@ co = checkout
 diff = meld
 
 [credential]
-helper = gnomekeyring
+helper = osxkeychain
 
 [identity "gns-systems"]
 	name = Robert Rauch (GNS Systems GmbH)
