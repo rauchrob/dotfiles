@@ -162,3 +162,10 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " Syntax Highlighting in Jenkinsfiles
 "======================================================================
 au BufReadPost Jenkinsfile set syntax=groovy
+
+
+"======================================================================
+" The backspace key didn't work as expected on MacOS
+" (see http://apple.stackexchange.com/questions/173275/delete-key-doesnt-work-in-vim-on-iterm2)
+"======================================================================
+set backspace=indent,eol,start
