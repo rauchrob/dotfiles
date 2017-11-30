@@ -24,3 +24,5 @@ helper = gnomekeyring
 [identity "private"]
 	name = Robert Rauch
 	email = mail@robertrauch.de
+[gpg]
+	program = gpg2
