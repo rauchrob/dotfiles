@@ -11,7 +11,8 @@ link git/gitconfig.local .gitconfig_local
 link gnupg/gpg-agent.conf
 link gnupg/gpg.conf
 link gnupg/pubring.gpg
-link gnupg/secring.gpg
+link gnupg/private-keys-v1.d
+link gnupg/.gpg-v21-migrated
 link gnupg/trustdb.gpg
 run chmod -R go-rwx ~/.gnupg
 
