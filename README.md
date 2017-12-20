@@ -11,5 +11,4 @@ To install my dotfiles in the current users home, simply run
     ./dotfiles/install
 ```
 
-The installer is custom made. Run `./install --help` for more available options.
-
+The installer is custom made. Run `./install -h` for more available options.
