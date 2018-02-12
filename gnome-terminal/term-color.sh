@@ -4,7 +4,7 @@
 
 # if gnome-session is not running exit, not logged in
 # only want to run if I am logged in
-PID=$(pgrep -u antonios gnome-session)
+PID=$(pgrep -u $(whoami) gnome-session)
 [ -z $PID ] && exit
 
 # -z True if the length of string is zero.
