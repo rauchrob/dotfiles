@@ -1,0 +1,11 @@
+"*":
+  core:
+    telemetryConsent: "limited"
+    themes: [
+      "one-light-ui"
+      "solarized-light-syntax"
+    ]
+  editor:
+    fontSize: 20
+  "exception-reporting":
+    userId: "1044f863-034c-4bff-8a1c-22b01924f167"

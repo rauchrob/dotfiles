@@ -117,7 +117,11 @@ link() {
   fi
 
   debug "creating symbolic link ${path} -> ${target}"
-  ln -s $target $path
+  if $FORCE; then
+    ln -sf $target $path;
+  else
+    ln -s $target $path;
+  fi
 }
 
 warning() { 
@@ -156,6 +160,12 @@ run() {
 }
 
 install_dotfiles() {
+  link atom/config.cson
+  link atom/init.coffee
+  link atom/keymap.cson
+  link atom/snippets.cson
+  link atom/styles.less
+
   link bash/bashrc .bashrc
   link bash/bash_profile .bash_profile
 
