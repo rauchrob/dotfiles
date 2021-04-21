@@ -52,8 +52,8 @@ else
   # http://www.tldp.org/LDP/abs/html/quotingvar.html
   # quotes not needed in this case, because value will always be single word (number)
   if [ "$(date +%H)" -ge 17 ]; then
-    set_light
-  else
     set_dark
+  else
+    set_light
   fi
 fi

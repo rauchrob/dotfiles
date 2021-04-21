@@ -6,6 +6,14 @@
       "solarized-light-syntax"
     ]
   editor:
-    fontSize: 20
+    fontSize: 12
+    preferredLineLength: 100
+    scrollPastEnd: true
   "exception-reporting":
     userId: "1044f863-034c-4bff-8a1c-22b01924f167"
+  minimap:
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+  welcome:
+    showOnStartup: false
