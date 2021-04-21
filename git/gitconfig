@@ -26,3 +26,5 @@ helper = gnomekeyring
 	email = mail@robertrauch.de
 [gpg]
 	program = gpg2
+[merge]
+	tool = meld
