@@ -159,23 +159,31 @@ run() {
   fi
 }
 
-install_dotfiles() {
+install_atom_config() {
   link atom/config.cson
   link atom/init.coffee
   link atom/keymap.cson
   link atom/snippets.cson
   link atom/styles.less
+}
 
+install_bash_config() {
   link bash/bashrc .bashrc
   link bash/bash_profile .bash_profile
+}
 
+install_eyaml_config() {
   link eyaml/config.yaml
   link eyaml/public_key.pkcs7.pem
+}
 
+install_git_config() {
   link git/gitconfig .gitconfig
   link git/gitignore_global .gitignore_global
   link git/gitconfig.local .gitconfig_local
+}
 
+install_gnupg_config() {
   link gnupg/gpg-agent.conf
   link gnupg/gpg.conf
   link gnupg/pubring.gpg
@@ -183,26 +191,47 @@ install_dotfiles() {
   link gnupg/.gpg-v21-migrated
   link gnupg/trustdb.gpg
   run chmod -R go-rwx ~/.gnupg
+}
 
+install_mercurial_config() {
   link mercurial/hgrc .hgrc
   link mercurial/hgrc.local .hgrc.local
+}
 
-  link inputrc
-  link rvmrc
-  link gemrc
+install_tmux_config() {
   link tmux/tmux.conf .tmux.conf
   link tmux/plugins
   run tmux start-server
   run tmux new-session -d
   run ~/.tmux/plugins/tpm/scripts/install_plugins.sh
   run tmux kill-server
+}
 
+install_vim_config() {
   link vim/vimrc .vimrc
   link vim/vundle .vim/bundle/Vundle.vim
   run vim +BundleInstall +qall 2&> /dev/null
+}
 
+install_zsh_config() {
   link zsh/zshrc .zshrc
   link zsh/oh-my-zsh .oh-my-zsh
+}
+
+install_dotfiles() {
+  install_atom_config
+  install_bash_config
+  install_eyaml_config
+  install_git_config
+  install_gnupg_config
+  install_tmux_config
+  install_vim_config
+  install_zsh_config
+  
+  # misc installation
+  link inputrc
+  link rvmrc
+  link gemrc
 }
 
 main "$@"
