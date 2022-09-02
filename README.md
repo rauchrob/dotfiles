@@ -7,7 +7,7 @@ The installation procedure assumes `git`, `tmux` and `vim` to be installed.
 To install my dotfiles in the current users home, simply run
 
 ```bash
-    git clone git@bitbucket.org:rauch/dotfiles.git
+    git clone git@github.com:rauchrob/dotfiles.git
     ./dotfiles/install
 ```
 
