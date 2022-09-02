@@ -15,12 +15,10 @@ co = checkout
 [external]
 diff = meld
 
-[credential]
-helper = gnomekeyring
+[identity "europace"]
+  name = "Robert Rauch"
+  email = robert.rauch@europace.de
 
-[identity "gns-systems"]
-	name = Robert Rauch (GNS Systems GmbH)
-	email = robert.rauch@gns-systems.de
 [identity "private"]
 	name = Robert Rauch
 	email = mail@robertrauch.de
